@@ -3,9 +3,6 @@ Parcial 3 de la materia Sistemas Distribuidos
 
 ---
 
-
----
-
 ## Tecnologías
 
 - [Java](https://www.java.com/)
