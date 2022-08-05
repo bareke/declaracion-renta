@@ -7,33 +7,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.edu.unicauca.distribuidos.core.models.Cliente;
-import co.edu.unicauca.distribuidos.core.repositories.UsuarioRepository;
+import co.edu.unicauca.distribuidos.core.models.Compra;
+import co.edu.unicauca.distribuidos.core.repositories.CompraRepository;
 
 
 @Service
-public class ClienteServiceImpl implements IClienteService {
+public class CompraServiceImpl implements ICompraService {
 
 	@Autowired
-	private UsuarioRepository servicioAccesoBaseDatos;
+	private CompraRepository servicioAccesoBaseDatos;
 
 	@Override
-	public List<Cliente> findAll() {		
+	public List<Compra> findAll() {		
 		return this.servicioAccesoBaseDatos.findAll();
 	}
 
 	@Override
-	public Cliente findById(Integer id) {		
+	public Compra findById(Integer id) {		
 		return this.servicioAccesoBaseDatos.findById(id);
 	}
 
 	@Override
-	public Cliente save(Cliente cliente) {		
+	public Compra save(Compra cliente) {		
 		return this.servicioAccesoBaseDatos.save(cliente);
 	}
 
 	@Override
-	public Cliente update(Integer id, Cliente cliente) {		
+	public Compra update(Integer id, Compra cliente) {		
 		return this.servicioAccesoBaseDatos.update(id, cliente);
 	}
 
