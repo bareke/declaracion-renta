@@ -2,75 +2,77 @@ package vista;
 
 import java.util.Date;
 import java.util.List;
-import models.Cliente;
-import servicios.ClienteServices;
+import models.Compra;
+import servicios.CompraServices;
 
 public class Menu {
 
     public static void main(String[] args) {
 
-        ClienteServices objClienteServices = new ClienteServices();
+        CompraServices objCompraServices = new CompraServices();
 
-        /*
-		System.out.println("consultando un cliente con id 1");
-		Cliente objClienteConsultado= objClienteServices.consultarCliente(1);
-		imprimirCliente(objClienteConsultado);
-		
-		
-                System.out.println("\n listando clientes");
-		List<Cliente> listaDeClientes= objClienteServices.listarClientes();
-		
-		for (Cliente cliente : listaDeClientes) {
-			imprimirCliente(cliente);
-		}
-                
-		
-		System.out.println("\n registrando un cliente");	
-                Cliente objCliente= new Cliente();
-                objCliente.setId(5);
-                objCliente.setNombre("andrea");
-                objCliente.setApellido("perez");
-                objCliente.setEmail("andrea@unicauca.edu.co");
-                objCliente.setCreateAt(new Date());
-                Cliente objClienteRegistrado= objClienteServices.registrarCliente(objCliente);
+        // System.out.println("consultando un compra con id 1");
+        // Compra objCompraConsultado = objCompraServices.consultarCompra(1);
+        // imprimirCompra(objCompraConsultado);
 
-                System.out.println("\n listando clientes que contiene el cliente registrado");
-		List<Cliente> listaDeClientes= objClienteServices.listarClientes();
-		
-		for (Cliente cliente : listaDeClientes) {
-			imprimirCliente(cliente);
-		}
-                
-	    System.out.println("\n actualizando un cliente con id 1");
-	    Cliente objClienteActualizado= new Cliente();
-	    objClienteActualizado.setId(7);
-	    objClienteActualizado.setNombre("victor");
-	    objClienteActualizado.setApellido("santamaria");
-	    objClienteActualizado.setEmail("victor@unicauca.edu.co");
-	    objClienteActualizado.setCreateAt(new Date());
-	    
-	    Cliente objClienteAtualizado2=objClienteServices.actualizarCliente(objClienteActualizado, 1);
-	    imprimirCliente(objClienteAtualizado2);
-	    
-         */
-        System.out.println("\n eliminando un cliente");
-        Boolean bandera = objClienteServices.eliminarCliente(1);
+        // System.out.println("\n listando compras");
+        // List<Compra> listaDeCompras = objCompraServices.listarCompras();
 
-        System.out.println("\n listando clientes que contiene el cliente eliminado");
-        List<Cliente> listaDeClientes = objClienteServices.listarClientes();
+        // for (Compra compra : listaDeCompras) {
+        //     imprimirCompra(compra);
+        // }
 
-        for (Cliente cliente : listaDeClientes) {
-            imprimirCliente(cliente);
+        // System.out.println("\n registrando un compra");
+        // Compra objCompra = new Compra();
+        // objCompra.setId(6);
+        // objCompra.setTipo("Cedula");
+        // objCompra.setValor(250000);
+        // objCompra.setLugar("Esmeralda");
+        // objCompra.setMedioPago("Tarjeta Credito");
+        // objCompra.setNit("001");
+        // objCompra.setCreateAt(new Date());
+        // Compra objCompraRegistrado = objCompraServices.registrarCompra(objCompra);
+
+        // System.out.println("\n listando compras que contiene el compra registrado");
+        // List<Compra> listaDeCompras = objCompraServices.listarCompras();
+
+        // for (Compra compra : listaDeCompras) {
+        //     imprimirCompra(compra);
+        // }
+
+        // System.out.println("\n actualizando un compra con id 1");
+        // Compra objCompraActualizado = new Compra();
+        // objCompraActualizado.setId(7);
+        // objCompraActualizado.setTipo("Cedula");
+        // objCompraActualizado.setValor(75000);
+        // objCompraActualizado.setLugar("CC Terraplaza");
+        // objCompraActualizado.setMedioPago("Efectivo");
+        // objCompraActualizado.setNit("002");
+        // objCompraActualizado.setCreateAt(new Date());
+
+        // Compra objCompraAtualizado2 = objCompraServices.actualizarCompra(objCompraActualizado, 1);
+        // imprimirCompra(objCompraAtualizado2);
+
+        System.out.println("\n eliminando un compra");
+        Boolean bandera = objCompraServices.eliminarCompra(1);
+
+        System.out.println("\n listando compras que contiene el compra eliminado");
+        List<Compra> listaDeCompras = objCompraServices.listarCompras();
+
+        for (Compra compra : listaDeCompras) {
+            imprimirCompra(compra);
         }
 
     }
 
-    private static void imprimirCliente(Cliente objCliente) {
-        System.out.println(objCliente.getId());
-        System.out.println(objCliente.getNombre());
-        System.out.println(objCliente.getApellido());
-        System.out.println(objCliente.getEmail());
-        System.out.println(objCliente.getCreateAt());
+    private static void imprimirCompra(Compra objCompra) {
+        System.out.println(objCompra.getId());
+        System.out.println(objCompra.getTipo());
+        System.out.println(objCompra.getValor());
+        System.out.println(objCompra.getLugar());
+        System.out.println(objCompra.getFecha());
+        System.out.println(objCompra.getMedioPago());
+        System.out.println(objCompra.getCreateAt());
     }
 
 }
