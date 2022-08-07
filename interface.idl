@@ -1,0 +1,15 @@
+module sop_corba {
+    interface ControladorCompraInt {
+		struct CompraDTO {
+			long id;
+			string tipo;
+			long valor;
+			string lugar;
+			string fecha;
+			string medioPago;
+			string nit;
+		};
+
+		boolean imprimirCompra(in CompraDTO objCompra);
+    };
+};

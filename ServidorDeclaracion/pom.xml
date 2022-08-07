@@ -5,16 +5,19 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.0-SNAPSHOT</version>
+		<version>2.6.0-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>co.edu.unicauca.distribuidos</groupId>
 	<artifactId>proyecto_api_rest_cliente</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>proyecto_api_rest_cliente</name>
-	<description>Demo project for Spring Boot</description>
+	<version>1.0-SNAPSHOT</version>
+	<name>ServidorDeclaracion</name>
+	<description>Proyecto declaracion de renta</description>
 	<properties>
-		<java.version>8</java.version>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            <maven.compiler.source>1.8</maven.compiler.source>
+            <maven.compiler.target>1.8</maven.compiler.target>
+            <java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

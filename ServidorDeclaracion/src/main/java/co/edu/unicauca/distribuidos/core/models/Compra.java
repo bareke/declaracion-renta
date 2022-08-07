@@ -12,10 +12,7 @@ public class Compra {
     private String medioPago;
     private String nit;
 
-    private Date createAt;
-
-    public Compra(Integer id, String tipo, Integer valor, String lugar, Date fecha, String medioPago, String nit,
-            Date createAt) {
+    public Compra(Integer id, String tipo, Integer valor, String lugar, Date fecha, String medioPago, String nit) {
         this.id = id;
         this.tipo = tipo;
         this.valor = valor;
@@ -23,8 +20,6 @@ public class Compra {
         this.fecha = fecha;
         this.medioPago = medioPago;
         this.nit = nit;
-
-        this.createAt = createAt;
     }
 
     /**
@@ -95,20 +90,6 @@ public class Compra {
      */
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    /**
-     * @return Date return the createAt
-     */
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    /**
-     * @param createAt the createAt to set
-     */
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
     }
 
 }
