@@ -42,7 +42,7 @@ public class ClienteRestController {
 
 	@GetMapping("compras2/{name}/{age}")
 	public String getMessage(@PathVariable("name") String name, @PathVariable("age") String edad) {
-		var msg = String.format("%s es %s años viejo", name, edad);
+		String msg = String.format("%s es %s años viejo", name, edad);
 		System.out.println(msg);
 		return msg;
 	}
@@ -51,7 +51,7 @@ public class ClienteRestController {
 	public String getMessageParametros(@RequestParam String nombres,
 			@RequestParam String apellidos,
 			@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fecha) {
-		var msg = String.format("buscando un cliente por nombre: %s, apellidos: %s fecha %s", nombres, apellidos,
+		String msg = String.format("buscando un cliente por nombre: %s, apellidos: %s fecha %s", nombres, apellidos,
 				fecha);
 		System.out.println(msg);
 		return msg;
