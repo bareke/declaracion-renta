@@ -1,6 +1,5 @@
 package servicios;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.client.Client;
@@ -49,12 +48,12 @@ public class CompraServices {
         return listaClientes;
     }
 
-    public Compra registrarCompra(Compra objClienteRegistar) {
+    public Compra registrarCompra(Compra objCompraRegistar) {
         Compra objCompra = null;
 
         WebTarget target = this.objCompraPeticiones.target(this.endPoint);
 
-        Entity<Compra> data = Entity.entity(objClienteRegistar, MediaType.APPLICATION_JSON_TYPE);
+        Entity<Compra> data = Entity.entity(objCompraRegistar, MediaType.APPLICATION_JSON_TYPE);
 
         Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
 
