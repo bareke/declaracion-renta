@@ -5,6 +5,10 @@ import sop_corba.ControladorCompraIntPOA;
 import sop_corba.ControladorCompraIntPackage.CompraDTO;
 import servidor.Repositorios.CompraRepositoryInt;
 
+/**
+ *
+ * @authors Cristian Collazos y Alejandro Muñoz
+ */
 public class ControladorGestorComprasImpl extends ControladorCompraIntPOA {
 
     private final CompraRepositoryInt objCancionesRepository;

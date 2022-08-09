@@ -3,6 +3,10 @@ package co.edu.unicauca.distribuidos.core.services;
 import co.edu.unicauca.distribuidos.core.utilidades.UtilidadesRegistroC;
 import sop_corba.ControladorCompraIntOperations;
 
+/**
+ *
+ * @authors Cristian Collazos y Alejandro Muñoz
+ */
 public class ClienteDeObjetos {
 
     private static ControladorCompraIntOperations objRemoto;

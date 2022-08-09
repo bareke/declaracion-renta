@@ -3,7 +3,12 @@ package co.edu.unicauca.distribuidos.core.utilidades;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+/**
+ *
+ * @authors Cristian Collazos y Alejandro Muñoz
+ */
 public class UtilidadesConsola {
+
     public static int leerEntero() {
         String linea = "";
         int opcion = 0;

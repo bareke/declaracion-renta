@@ -6,32 +6,36 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import co.edu.unicauca.distribuidos.core.models.Compra;
 import co.edu.unicauca.distribuidos.core.services.ClienteDeObjetos;
+import java.util.Objects;
 import sop_corba.ControladorCompraIntOperations;
 import sop_corba.ControladorCompraIntPackage.CompraDTO;
 
+/**
+ *
+ * @authors Cristian Collazos y Alejandro Muñoz
+ */
 @Service
 public class CompraRepository {
 
-    private ArrayList<Compra> listaDeCompras;
+    private ArrayList<CompraDTO> listaDeCompras;
 
     public CompraRepository() {
-        this.listaDeCompras = new ArrayList<Compra>();
+        this.listaDeCompras = new ArrayList<CompraDTO>();
         cargarCompras();
     }
 
-    public List<Compra> findAll() {
-        System.out.println("Invocando a listarcompras");
+    public List<CompraDTO> findAll() {
+        System.out.println("Invocando a listar compras");
         return this.listaDeCompras;
     }
 
-    public Compra findById(Integer id) {
-        System.out.println("Invocando a consultar un compra");
-        Compra objCompra = null;
+    public CompraDTO findById(Integer id) {
+        System.out.println("Invocando a consultar una compra");
+        CompraDTO objCompra = null;
 
-        for (Compra cliente : listaDeCompras) {
-            if (cliente.getId() == id) {
+        for (CompraDTO cliente : listaDeCompras) {
+            if (cliente.id == id) {
                 objCompra = cliente;
                 break;
             }
@@ -40,37 +44,33 @@ public class CompraRepository {
         return objCompra;
     }
 
-    public Compra save(Compra cliente) {
+    public CompraDTO save(CompraDTO cliente) {
         System.out.println("Invocando a almacenar compra");
-        Compra objCompra = null;
+        CompraDTO objCompra = null;
         if (this.listaDeCompras.add(cliente)) {
             objCompra = cliente;
 
-            // Envia objeto a CORBA
-            ClienteDeObjetos clienteObjetos = new ClienteDeObjetos();
-            ControladorCompraIntOperations servidorNotificacion = ClienteDeObjetos.obtenerReferenciaRemota();
+            if (sumarCompras(objCompra.id) > 45000000) {
+                System.out.println("Usuario " + objCompra.id + " supero el valor maximo de 45 millones");
+                System.out.println();
+                System.out.println("Enviando notificacion");
 
-            CompraDTO objCompraNotificacion = new CompraDTO();
-            objCompraNotificacion.id = objCompra.getId();
-            objCompraNotificacion.tipo = objCompra.getTipo();
-            objCompraNotificacion.valor = objCompra.getValor();
-            objCompraNotificacion.lugar = objCompra.getLugar();
-            objCompraNotificacion.fecha = objCompra.getFecha().toString();
-            objCompraNotificacion.medioPago = objCompra.getMedioPago();
-            objCompraNotificacion.nit = objCompra.getNit();
+                ClienteDeObjetos clienteObjetos = new ClienteDeObjetos();
+                ControladorCompraIntOperations servidorNotificacion = ClienteDeObjetos.obtenerReferenciaRemota();
 
-            servidorNotificacion.imprimirCompra(objCompraNotificacion);
+                servidorNotificacion.imprimirCompra(objCompra);
+            }
+
         }
-
         return objCompra;
     }
 
-    public Compra update(Integer id, Compra cliente) {
-        System.out.println("Invocando a actualizar un compra");
-        Compra objCompra = null;
+    public CompraDTO update(Integer id, CompraDTO cliente) {
+        System.out.println("Invocando a actualizar una compra");
+        CompraDTO objCompra = null;
 
         for (int i = 0; i < this.listaDeCompras.size(); i++) {
-            if (this.listaDeCompras.get(i).getId() == id) {
+            if (this.listaDeCompras.get(i).id == id) {
                 this.listaDeCompras.set(i, cliente);
                 objCompra = cliente;
                 break;
@@ -81,11 +81,11 @@ public class CompraRepository {
     }
 
     public boolean delete(Integer id) {
-        System.out.println("Invocando a eliminar un compra");
+        System.out.println("Invocando a eliminar una compra");
         boolean bandera = false;
 
         for (int i = 0; i < this.listaDeCompras.size(); i++) {
-            if (this.listaDeCompras.get(i).getId() == id) {
+            if (this.listaDeCompras.get(i).id == id) {
                 this.listaDeCompras.remove(i);
                 bandera = true;
                 break;
@@ -96,12 +96,22 @@ public class CompraRepository {
     }
 
     private void cargarCompras() {
-        Compra objCompra1 = new Compra(1, "Cedula", 15000, "CC Campanario", new Date(), "Efectivo", "123");
+        CompraDTO objCompra1 = new CompraDTO(1, "Cedula", 5000000, "CC Campanario", new Date().toString(), "Efectivo", "123");
         this.listaDeCompras.add(objCompra1);
-        Compra objCompra2 = new Compra(2, "Extranjeria", 100000, "Exito", new Date(), "Tarjeta Credito", "456");
+        CompraDTO objCompra2 = new CompraDTO(2, "Extranjeria", 1800000, "Exito", new Date().toString(), "Tarjeta Credito", "456");
         this.listaDeCompras.add(objCompra2);
-        Compra objCompra3 = new Compra(3, "Cedula", 380000, "Olimpica", new Date(), "Tarjeta Debito", "789");
+        CompraDTO objCompra3 = new CompraDTO(3, "Cedula", 30000000, "Olimpica", new Date().toString(), "Tarjeta Debito", "789");
         this.listaDeCompras.add(objCompra3);
     }
 
+    private int sumarCompras(Integer id) {
+        int valorTotal = 0;
+
+        for (CompraDTO compra : listaDeCompras) {
+            if (Objects.equals(compra.id, id)) {
+                valorTotal += compra.valor;
+            }
+        }
+        return valorTotal;
+    }
 }

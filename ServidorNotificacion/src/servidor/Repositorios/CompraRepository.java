@@ -2,6 +2,10 @@ package servidor.Repositorios;
 
 import sop_corba.ControladorCompraIntPackage.CompraDTO;
 
+/**
+ *
+ * @authors Cristian Collazos y Alejandro Muñoz
+ */
 public class CompraRepository implements CompraRepositoryInt {
 
     public CompraRepository() {
@@ -10,7 +14,9 @@ public class CompraRepository implements CompraRepositoryInt {
     @Override
     public boolean imprimirCompra(CompraDTO objCompra) {
 
-        System.out.println("Archivo creado en el servidor");
+        System.out.println("Invocando a imprimir compra");
+        System.out.println();
+
         System.out.println("id: " + objCompra.id);
         System.out.println("Valor de la compra: " + objCompra.valor);
         System.out.println("Lugar: " + objCompra.lugar);

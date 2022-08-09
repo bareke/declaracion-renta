@@ -1,18 +1,25 @@
-package co.edu.unicauca.distribuidos.core.models;
+package models;
 
 import java.util.Date;
 
-public class Compra {
+/**
+ *
+ * @authors Cristian Collazos y Alejandro Muñoz
+ */
+public class CompraDTO {
 
     private Integer id;
     private String tipo;
     private Integer valor;
     private String lugar;
-    private Date fecha;
+    private String fecha;
     private String medioPago;
     private String nit;
 
-    public Compra(Integer id, String tipo, Integer valor, String lugar, Date fecha, String medioPago, String nit) {
+    public CompraDTO() {
+    }
+
+    public CompraDTO(Integer id, String tipo, Integer valor, String lugar, String fecha, String medioPago, String nit) {
         this.id = id;
         this.tipo = tipo;
         this.valor = valor;
@@ -37,7 +44,7 @@ public class Compra {
     }
 
     /**
-     * 
+     *
      * @return String return the tipo
      */
     public String getTipo() {
@@ -60,11 +67,11 @@ public class Compra {
         this.lugar = lugar;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -85,7 +92,7 @@ public class Compra {
     }
 
     /**
-     * 
+     *
      * @param tipo the tpo to set
      */
     public void setTipo(String tipo) {

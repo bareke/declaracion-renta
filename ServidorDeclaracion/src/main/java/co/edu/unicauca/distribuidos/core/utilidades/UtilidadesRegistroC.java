@@ -6,6 +6,10 @@ import org.omg.CosNaming.NamingContextExtHelper;
 import sop_corba.ControladorCompraInt;
 import sop_corba.ControladorCompraIntHelper;
 
+/**
+ *
+ * @authors Cristian Collazos y Alejandro Muñoz
+ */
 public class UtilidadesRegistroC {
 
     public static ControladorCompraInt obtenerObjRemoto(String[] vectorDatosNS, String idObjetoRemoto) {

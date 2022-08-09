@@ -16,6 +16,10 @@ import servidor.controladores.ControladorGestorComprasImpl;
 import sop_corba.ControladorCompraInt;
 import sop_corba.ControladorCompraIntHelper;
 
+/**
+ *
+ * @authors Cristian Collazos y Alejandro Muñoz
+ */
 public class UtilidadesRegistroS {
 
     public static void registrarObjetoRemoto(String[] vectorDatosNS, ControladorGestorComprasImpl objRemoto, String idObjetoRemoto) throws ServantNotActive, WrongPolicy, org.omg.CORBA.ORBPackage.InvalidName, AdapterInactive, InvalidName, NotFound, CannotProceed {

@@ -11,8 +11,12 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import org.glassfish.jersey.jackson.JacksonFeature;
 
-import models.Compra;
+import models.CompraDTO;
 
+/**
+ *
+ * @authors Cristian Collazos y Alejandro Muñoz
+ */
 public class CompraServices {
 
     private String endPoint;
@@ -23,55 +27,55 @@ public class CompraServices {
         this.objCompraPeticiones = ClientBuilder.newClient().register(new JacksonFeature());
     }
 
-    public Compra consultarCompra(Integer id) {
-        Compra objCompra = null;
+    public CompraDTO consultarCompra(Integer id) {
+        CompraDTO objCompra = null;
 
         WebTarget target = this.objCompraPeticiones.target(this.endPoint + "/" + id);
 
         Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
 
-        objCompra = objPeticion.get(Compra.class);
+        objCompra = objPeticion.get(CompraDTO.class);
 
         return objCompra;
     }
 
-    public List<Compra> listarCompras() {
-        List<Compra> listaClientes = null;
+    public List<CompraDTO> listarCompras() {
+        List<CompraDTO> listaClientes = null;
 
         WebTarget target = this.objCompraPeticiones.target(this.endPoint);
 
         Builder objPeticion = target.request(MediaType.APPLICATION_JSON);
 
-        listaClientes = objPeticion.get(new GenericType<List<Compra>>() {
+        listaClientes = objPeticion.get(new GenericType<List<CompraDTO>>() {
         });
 
         return listaClientes;
     }
 
-    public Compra registrarCompra(Compra objCompraRegistar) {
-        Compra objCompra = null;
+    public CompraDTO registrarCompra(CompraDTO objCompraRegistar) {
+        CompraDTO objCompra = null;
 
         WebTarget target = this.objCompraPeticiones.target(this.endPoint);
 
-        Entity<Compra> data = Entity.entity(objCompraRegistar, MediaType.APPLICATION_JSON_TYPE);
+        Entity<CompraDTO> data = Entity.entity(objCompraRegistar, MediaType.APPLICATION_JSON_TYPE);
 
         Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
 
-        objCompra = objPeticion.post(data, Compra.class);
+        objCompra = objPeticion.post(data, CompraDTO.class);
 
         return objCompra;
     }
 
-    public Compra actualizarCompra(Compra objClienteActualizar, Integer id) {
-        Compra objCompra = null;
+    public CompraDTO actualizarCompra(CompraDTO objClienteActualizar, Integer id) {
+        CompraDTO objCompra = null;
 
         WebTarget target = this.objCompraPeticiones.target(this.endPoint + "/" + id);
 
-        Entity<Compra> data = Entity.entity(objClienteActualizar, MediaType.APPLICATION_JSON_TYPE);
+        Entity<CompraDTO> data = Entity.entity(objClienteActualizar, MediaType.APPLICATION_JSON_TYPE);
 
         Builder objPeticion = target.request(MediaType.APPLICATION_JSON_TYPE);
 
-        objCompra = objPeticion.put(data, Compra.class);
+        objCompra = objPeticion.put(data, CompraDTO.class);
 
         return objCompra;
     }

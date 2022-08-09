@@ -1,64 +1,26 @@
 package vista;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
-import models.Compra;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.CompraDTO;
 import servicios.CompraServices;
 import utilidades.UtilidadesConsola;
 
+/**
+ *
+ * @authors Cristian Collazos y Alejandro Muñoz
+ */
 public class Menu {
 
     private static CompraServices objCompraServices = new CompraServices();
 
-//    public static void main(String[] args) {
-//         System.out.println("consultando un compra con id 1");
-//         Compra objCompraConsultado = objCompraServices.consultarCompra(1);
-//         imprimirCompra(objCompraConsultado);
-//
-//         System.out.println("\n listando compras");
-//         List<Compra> listaDeCompras = objCompraServices.listarCompras();
-//         for (Compra compra : listaDeCompras) {
-//             imprimirCompra(compra);
-//         }
-//         System.out.println("\n registrando un compra");
-//         Compra objCompra = new Compra();
-//         objCompra.setId(6);
-//         objCompra.setTipo("Cedula");
-//         objCompra.setValor(250000);
-//         objCompra.setLugar("Esmeralda");
-//         objCompra.setMedioPago("Tarjeta Credito");
-//         objCompra.setNit("001");
-//         objCompra.setCreateAt(new Date());
-//         Compra objCompraRegistrado = objCompraServices.registrarCompra(objCompra);
-//         System.out.println("\n listando compras que contiene el compra registrado");
-//         List<Compra> listaDeCompras = objCompraServices.listarCompras();
-//         for (Compra compra : listaDeCompras) {
-//             imprimirCompra(compra);
-//         }
-//         System.out.println("\n actualizando un compra con id 1");
-//         Compra objCompraActualizado = new Compra();
-//         objCompraActualizado.setId(7);
-//         objCompraActualizado.setTipo("Cedula");
-//         objCompraActualizado.setValor(75000);
-//         objCompraActualizado.setLugar("CC Terraplaza");
-//         objCompraActualizado.setMedioPago("Efectivo");
-//         objCompraActualizado.setNit("002");
-//         objCompraActualizado.setCreateAt(new Date());
-//         Compra objCompraAtualizado2 = objCompraServices.actualizarCompra(objCompraActualizado, 1);
-//         imprimirCompra(objCompraAtualizado2);
-//        System.out.println("\n eliminando una compra");
-//        Boolean bandera = objCompraServices.eliminarCompra(1);
-//
-//        System.out.println("\n listando compras que contiene la compra eliminada");
-//        List<Compra> listaDeCompras = objCompraServices.listarCompras();
-//
-//        for (Compra compra : listaDeCompras) {
-//            imprimirCompra(compra);
-//        }
-//
-//    }
     public static void main(String[] args) {
         int opcion = 0;
         do {
+            System.out.println();
             System.out.println("==Menu==");
             System.out.println("1. Registrar compra");
             System.out.println("2. Listar compras");
@@ -68,7 +30,7 @@ public class Menu {
 
             switch (opcion) {
                 case 1:
-                    // Opcion1();
+                    Opcion1();
                     break;
                 case 2:
                     Opcion2();
@@ -86,27 +48,50 @@ public class Menu {
     private static void Opcion1() {
         System.out.println("\n Registrando compra");
 
-        Compra objCompra = new Compra();
-        objCompraServices.registrarCompra(objCompra);
+        CompraDTO objCompra = new CompraDTO();
 
-        // if (valor) {
-        //     System.out.println("Registro realizado satisfactoriamente...");
-        // } else {
-        //     System.out.println("no se pudo realizar el registro...");
-        // }
+        System.out.println("Documento identidad");
+        objCompra.setId(UtilidadesConsola.leerEntero());
+
+        System.out.println("Tipo documento identidad");
+        objCompra.setTipo(UtilidadesConsola.leerCadena());
+
+        System.out.println("Valor compra");
+        objCompra.setValor(UtilidadesConsola.leerEntero());
+
+        System.out.println("Lugar compra");
+        objCompra.setLugar(UtilidadesConsola.leerCadena());
+
+        System.out.println("Fecha compra");
+        objCompra.setFecha(UtilidadesConsola.leerCadena());
+
+        System.out.println("Medio pago");
+        objCompra.setMedioPago(UtilidadesConsola.leerCadena());
+
+        System.out.println("Nit empresa");
+        objCompra.setNit(UtilidadesConsola.leerCadena());
+
+        objCompra = objCompraServices.registrarCompra(objCompra);
+
+        if (objCompra != null) {
+            System.out.println("Registro realizado satisfactoriamente...");
+        } else {
+            System.out.println("no se pudo realizar el registro...");
+        }
     }
 
     private static void Opcion2() {
         System.out.println("\n Listando compras");
 
-        List<Compra> listaDeCompras = objCompraServices.listarCompras();
+        List<CompraDTO> listaDeCompras = objCompraServices.listarCompras();
 
-        for (Compra compra : listaDeCompras) {
+        for (CompraDTO compra : listaDeCompras) {
             imprimirCompra(compra);
         }
     }
 
-    private static void imprimirCompra(Compra objCompra) {
+    private static void imprimirCompra(CompraDTO objCompra) {
+        System.out.println();
         System.out.println(objCompra.getId());
         System.out.println(objCompra.getTipo());
         System.out.println(objCompra.getValor());

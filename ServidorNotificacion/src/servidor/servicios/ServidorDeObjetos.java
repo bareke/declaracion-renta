@@ -5,6 +5,10 @@ import servidor.controladores.ControladorGestorComprasImpl;
 
 import servidor.utilidades.UtilidadesRegistroS;
 
+/**
+ *
+ * @authors Cristian Collazos y Alejandro Muñoz
+ */
 public class ServidorDeObjetos {
 
     public static void main(String[] args) {
